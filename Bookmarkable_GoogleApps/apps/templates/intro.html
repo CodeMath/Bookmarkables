@@ -1,0 +1,147 @@
+﻿{% extends "layout.html" %}
+{% block meta %}
+<meta property="og:title" content="모두의 링크! 북마커블 - 소개">
+{% endblock %}
+
+{% block css %}
+<style>.mains_1{background-color:rgb(51,51,51); padding-top:30px; padding-bottom:50px;}.mains_2{background-color:#424953;padding-top:90px; padding-bottom: 50px;}.mains_3{background-color:rgb(51,51,51); padding-top: 100px; padding-bottom: 90px;}.mains_4{background-color:#424953; padding-top:100px; padding-bottom:100px;}
+    #slides {display: none;}#slides .slidesjs-navigation {margin-top: 5px;}a.slidesjs-next,a.slidesjs-previous,a.slidesjs-play,a.slidesjs-stop {background-image: url(../img/btns-next-prev.png);background-repeat: no-repeat;display: block;width: 12px;height: 18px;overflow: hidden;text-indent: -9999px;float: left; margin-right: 5px;}a.slidesjs-next {margin-right: 10px;background-position: -12px 0;}a:hover.slidesjs-next {background-position: -12px -18px;}a.slidesjs-previous {background-position: 0 0;}a:hover.slidesjs-previous {background-position: 0 -18px;}a.slidesjs-play {width: 15px;background-position: -25px 0;}a:hover.slidesjs-play {background-position: -25px -18px;}a.slidesjs-stop {width: 18px;background-position: -41px 0;}a:hover.slidesjs-stop {background-position: -41px -18px;}.slidesjs-pagination {margin: 7px 0 0;float: right;list-style: none;}.slidesjs-pagination li {float: left;margin: 0 1px;}.slidesjs-pagination li a {display: block;width: 13px;height: 0;padding-top: 13px;background-image: url(../img/pagination.png);background-position: 0 0;float: left;overflow: hidden;}.slidesjs-pagination li a.active,.slidesjs-pagination li a:hover.active {background-position: 0 -13px;}.slidesjs-pagination li a:hover {background-position: 0 -26px;}#slides a:link, #slides a:visited {color: #333;}#slides a:hover,#slides a:active {color: #9e2020;}
+</style>
+{% endblock %}
+
+{% block content %}
+{% if get_flashed_messages() %}
+<div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h4 class="panel-title" style="text-align: center;">웁스~! 확인하세요! </h4>
+        </div>
+        <div class="panel-body">
+            {% for each in get_flashed_messages() %}
+            <div class="flash">
+                <h3 class="text-center">{{each}}</h3>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div id="slides">
+                <img src="../static/img/mains/mains_1.png" class="slidesjs-slide" slidesjs-index="0" />
+                <img src="../static/img/mains/mains_2.png" class="slidesjs-slide" slidesjs-index="1" />
+                <img src="../static/img/mains/mains_3.png" class="slidesjs-slide" slidesjs-index="2" />
+                <img src="../static/img/mains/mains_4.png" class="slidesjs-slide" slidesjs-index="3" />
+            </div>
+        </div> <!-- col-xs-12 col-sm-12 col-md-12 -->
+    </div><!--/row-->
+</div>
+<div class="mains_1">
+    <div class="section_1">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
+                <img src="../static/img/mains/search.png" style="width:50%; margin-left:25%; padding-top:50px; padding-bottom:10px;">
+                <h2 style="color:#fff; text-align:center;"><small>구글,네이버,다음... 에 뭐라 검색해야 하는거야?</small></h2>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-md-offser-1">
+                <h1 style="color:#fff;text-align:center; padding-top:50px;">내가 필요한 사이트는 <br> <strong>도대체</strong> <br> 어디있지? </h1>
+                <h4 style="color:#fff; text-align:center;padding-top:70px;">다른 사람들은 잘 찾던데... 왜 나만 못찾지?</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mains_2">
+    <div class="section_1">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <img src="../static/img/mains/Label.png" style="width:50%; margin-left:25%;">
+                <h3 style="color:#fff; text-align:center; padding-bottom:50px;"><strong>북마크마다 일일이 태그를 할 수도 없고...</strong></h3>
+            </div>
+            
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <img src="../static/img/mains/Browser.png" style="50%;margin-left:25%;">
+                <h3 style="color:#fff;text-align:center;"> 진짜 같은 가짜 사이트 말고! </h3>
+                <h4 style="color:#fff; text-align:center;"> 정말로 <strong>중요한</strong> 사이트!</h4>
+                <h4 style="color:#fff; text-align:center;"><strong>유용한</strong> 사이트!</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mains_3">
+    <div class="section_1">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <img src="../static/img/mains/saving.png" style="width:50%;margin-left:25%;">
+                        <h2 style="color:#fff; text-align:center; padding-bottom:30px;"> 북마크를 저장하고 <br> 코멘트를 작성하세요! </h2>        
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <img src="../static/img/mains/phone.png" style="width:50%;margin-left:25%; position:relative; bottom:10px;">
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <h1 style="color:#fff; padding-top:75px; text-align:center;"><strong>나만의 웹 북마크를 <br> 만들어서 공유해보세요!</strong></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mains_4">
+    <div class="section_1">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <img src="../static/img/mains/books.png" style="width: 50%; margin-left: 25%; position: relative; padding-bottom: 80px; top:30px;">
+                <h3 style="color:#fff; text-align:center;"><strong>저장한 북마크마다 <br> <strong>코멘트</strong>를 작성할 수 있어요!</strong></h3>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <img src="../static/img/mains/plane.png" style="width: 50%; margin-left: 25%; padding-bottom:30px; padding-top:50px;">
+                <h3 style="color:#fff;text-align:center;"><strong>친구들에게 편하게 <br> 공유할 수 도 있어요!</strong></h3>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <img src="../static/img/mains/lock.png" style="width:50%; margin-left:25%; padding-bottom:30px; padding-top:50px;">
+                <h3 style="color:#fff;text-align:center;"><strong>비밀번호로 안전하게!</strong> <br> 아무나 들어올 수 없어요!</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"></a>
+<div id="scrollUp-active" style="position: absolute; top: 300px; width: 100%; border-top-width: 1px; border-top-style: dotted; border-top-color: rgb(0, 255, 255); z-index: 2147483647; display: none;"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/jquery.slides.min.js"></script>
+<script src="../static/js/jquery.scrollUp.min.js"></script>
+
+<script type="text/javascript">$(function () {$.scrollUp({scrollName: 'scrollUp',topDistance: '300', topSpeed: 300,animation: 'fade',animationInSpeed: 200, animationOutSpeed: 200, scrollText:'',activeOverlay: false});});</script>
+
+<script type="text/javascript">
+$(function () {
+    $('#slides').slidesjs({
+        width: 640,
+        height: 360,
+        play: {
+            active: true,
+            auto: true,
+            interval: 6000,
+            swap: true,
+            pauseOnHover: true,
+            restartDelay: 2200
+        }
+    });
+});
+</script>
+{% endblock %}
+
+
+
+

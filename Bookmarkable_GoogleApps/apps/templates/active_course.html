@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+{% endblock %}
+
+{% block css %}
+<style>
+.co_course{
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+@media screen and (max-width: 768px) {
+  .co_course{
+  height: 150px;
+}
+}
+
+@media screen and (min-width: 768px) {
+  .co_course{
+  height: 400px;
+}
+}
+</style>
+{% endblock %}
+
+{% block content %}
+{% if get_flashed_messages() %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">웁스~! 확인하세요! </h3>
+        </div>
+        <div class="panel-body">
+          {% for each in get_flashed_messages() %}
+          <div class="flash">
+            {{each}}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+{% endif %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3">
+      <div class="list-group co_course">
+        <a href="/{{ course }}/" class="list-group-item ">
+          example1
+        </a>
+      </div>
+    </div>
+    <!-- col-xs-12 col-sm-12 col-md-3 -->
+    <div class="col-xs-12 col-sm-9 col-md-9">
+      <!-- row -->
+      <div class="row">
+        <h2>파이썬에 대한 모든 것을 다룹니다. <br><small>- 공식문서를 기반으로 합니다만, 실제 초보 및 중급자들을 위한 내용이 주가 됩니다.</small></h2>
+        <p>현재 나누어진 카테고리는 Python-종합, Flask, Django, 라이브러리 소개, 파이썬을 이용한 국내외 회사 소개, 파이콘 행사</p>
+        <img src="/static/img/course/active/python.png" alt="" class="co_img">
+      </div>
+      <!-- row -->
+    </div>
+    <!-- col-xs-12 col-sm-9 col-md-9 -->
+  </div>
+</div>
+<!-- container -->
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

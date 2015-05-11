@@ -1,0 +1,261 @@
+﻿{% extends "layout.html" %}
+
+{% block meta %}
+<meta property="og:title" content="모두의 링크! 북마커블 - 카테고리">
+<meta name="author" content="북마커블">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="모두의 링크! 북마커블 - 카테고리">
+<meta name="image" content="http://bookmarkable.org/static/img/x250.png">
+<meta property="og:image" content="http://bookmarkable.org/static/img/x250.png">
+{% if sections == 1111 %}
+<meta name="description" content="종합 디자인 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:description" content=" 종합 디자인- 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:url" content="http://bookmarkable.org/lsit/design">
+<meta name="url" content="http://bookmarkable.org/lsit/design">
+{% elif sections == 2222 %}
+<meta name="description" content="종합 개발 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:description" content="종합 개발 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:url" content="http://bookmarkable.org/lsit/develop">
+<meta name="url" content="http://bookmarkable.org/lsit/develop">
+{% elif sections == 3333 %}
+<meta name="description" content="종합 개발 소스 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:description" content="종합 개발 소스 - 개발자, 디자이너,대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:url" content="http://bookmarkable.org/lsit/source">
+<meta name="url" content="http://bookmarkable.org/lsit/source">
+{% elif sections == 4444 %}
+<meta name="description" content="Slideshare - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:description" content="Slideshare - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:url" content="http://bookmarkable.org/lsit/slideshare">
+<meta name="url" content="http://bookmarkable.org/lsit/slideshare">
+{% elif sections == 5555 %}
+<meta name="description" content="PPT&템플릿 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:description" content="PPT&템플릿 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:url" content="http://bookmarkable.org/lsit/ppt">
+<meta name="url" content="http://bookmarkable.org/lsit/ppt">
+{% elif sections == 6666 %}
+<meta name="description" content="꿀뉴스 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:description" content="꿀뉴스 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:url" content="http://bookmarkable.org/lsit/honey_news">
+<meta name="url" content="http://bookmarkable.org/lsit/honey_news">
+{% elif sections == 7777 %}
+<meta name="description" content="추천 사이트 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:description" content="추천 사이트 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:url" content="http://bookmarkable.org/lsit/recommend">
+<meta name="url" content="http://bookmarkable.org/lsit/recommend">
+{% else %}
+{% endif %}
+
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/css/lists.css" />
+<style>.t_body{text-align: center;}</style>
+{% endblock %}
+
+{% block content %}
+{% if get_flashed_messages() %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">웁스~! 확인하세요! </h3>
+                </div>
+                <div class="panel-body">
+                    {% for each in get_flashed_messages() %}
+                    <div class="flash">
+                        {{each}}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <ul class="nav nav-tabs" role="tablist" id="list_Tab">
+                <li role="presentation" ><a href="#albums" aria-controls="albums" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> 앨범형</a></li>
+                <li role="presentation"><a href="#tables" aria-controls="tables" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 게시판형</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="tab-content">
+                <!-- Image_add_results -->
+                <div role="tabpanel" class="tab-pane" id="albums">
+                    <div class="row" id="results">
+                        {% if data.content %}
+                        {% for each in data.content %}
+                        <!-- start -->
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="row_content"> 
+                                <a href="/{{ content }}/{{ each.id }}" class="thumbnail" target="_blank" >
+                                    <img class="img_thum" src="http://images.shrinktheweb.com/xino.php?stwembed=1&stwxmax=320&stwymax=240&stwaccesskeyid=d38208d2e78d331&stwurl={{ each.urls }}" border=0 style="height:190px;"/>
+                                </a>
+                                <h4 class="explain_space thumbnail">{{ each.subject }}<br><small>tag : {{ each.tag1 }},{{ each.tag2 }}</small></h4>
+                            </div> <!-- row_content -->
+                        </div>
+                        <!-- end -->
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <!-- 더보기 버튼 -->
+                    <div align="center" id="morebtn">
+                        <button class="btn btn-danger" id="load_more_button">더보기</button>
+                        <div class="animation_image" style="display:none;">
+                            <p>로딩중....</p>   
+                        </div>
+                    </div>
+                </div>
+                <!-- Image_end_results -->
+
+                <!-- table_add_results -->
+                <div role="tabpanel" class="tab-pane" id="tables">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class="t_body"> 링크 제목 </th>
+                                        <th class="t_body"> 링크 설명 </th>
+                                        <th class="t_body"> Tags </th>
+                                        <th class="t_body"> 제보자 </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="t_result">
+                                    {% if data.content %}
+                                    {% for each in data.content %}
+                                    <tr>
+                                        <td class="t_body"><a href="/{{ content }}/{{ each.id }}" target="_blank" >{{ each.subject }}</a></td>
+                                        <td class="t_body">{{ each.explain|truncate(25) }}</td>
+                                        <td class="t_body">{{ each.tag1 }}, {{ each.tag2 }}</td>
+                                        <td class="t_body">{{ each.user_name }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- table_end_results -->
+                    <!-- 더보기 버튼 -->
+                    <div align="center" id="morebtns">
+                        <button class="btn btn-danger" id="load_more_buttons">더보기</button>
+                        <div class="animation_image" style="display:none;">
+                            <p>로딩중...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- col-xs-12 col-md-8 col-md-offset-2 -->
+    </div> <!-- row -->
+</div> <!-- container -->
+
+
+
+
+<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"></a>
+<div id="scrollUp-active" style="position: absolute; top: 300px; width: 100%; border-top-width: 1px; border-top-style: dotted; border-top-color: rgb(0, 255, 255); z-index: 2147483647; display: none;"></div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="../static/js/jquery.scrollUp.min.js"></script>
+<script src="../static/js/row_content.js"></script>
+
+
+<script type="text/javascript">
+$(function () {$.scrollUp({scrollName: 'scrollUp',topDistance: '300', topSpeed: 300,animation: 'fade',animationInSpeed: 200, animationOutSpeed: 200, scrollText:'',activeOverlay: false});});
+</script>
+<!-- ABU -->
+<script type="text/javascript">
+function getdata(number){
+    var EndData = false;
+    $.ajax({url:"/more",dataType: 'JSON',data:{number : number,sections : {{ sections }} },
+        success:function(data){if(data.id < 1){
+            $("#morebtn").hide();EndData = true;
+        }else{
+            string = "<!-- start --><div class='col-xs-12 col-sm-6 col-md-3'><div class='row_content'><a href='/{{ content }}/"+data.id+"' class='thumbnail' target='_blank' ><img class='img_thum' src='http://images.shrinktheweb.com/xino.php?stwembed=1&stwxmax=320&stwymax=240&stwaccesskeyid=d38208d2e78d331&stwurl="+data.urls+"' border=0 style='height:190px;'/></a><h4 class='explain_space thumbnail'>"+data.subject+"<br><small>tag : "+data.tag1+","+data.tag2+"</small><h44></div></div>";
+            
+            $("#results").append(string);
+
+            $(".row_content").on(
+            {
+                mouseenter: function () {
+                    $(this).children('.explain_space').css('display','block');
+                },
+                mouseleave: function () {
+                    $(this).children('.explain_space').css('display','none');
+                }
+            });
+        }
+    },error:function(status){
+        alert("ㅠㅠ ERROR는 싫어요~! 다시 실행해주세요!")}
+    });return true;};
+$(document).ready(function(){
+    var number = 0;
+    var string;
+    $.ajax({
+        url:"/rows",
+        dataType:"JSON",
+        data:{
+            sections : {{ sections }} 
+        },success:function(data){number = data.rows-12;} });
+    $('#load_more_button').bind('click',function(){ 
+        for (var i = 0; i < 12; i++ ){
+           getdata(number);
+           number--;
+           if(number < 1){
+            break;
+        } 
+    }return false;}); 
+});
+</script>
+<script src="../static/js/lds.js"></script>
+<!-- TBS -->
+<script type="text/javascript">
+function t_getdata(T_number){
+    var EndDatas = false;
+    $.ajax({url:"/t_more",dataType: 'JSON',data:{number : T_number,sections : {{ sections }} },
+        success:function(data){if(data.id < 1){
+            $("#morebtns").hide();EndData = true;
+        }else{
+            t_string = "<tr><td class='t_body'><a href='/{{ content }}/"+data.id+"' target='_blank' >"+data.subject+"</a></td><td class='t_body'>"+data.explain+"</td><td class='t_body'>"+data.tag1+", "+data.tag2+"</td><td class='t_body'>"+data.user_name+"</td></tr>";
+            
+            $("#t_result").append(t_string);
+
+        }
+    },error:function(status){
+        alert("ㅠㅠ ERROR는 싫어요~! 다시 실행해주세요!")}
+    });return true;};
+    $(document).ready(function(){
+        var T_number = 0;
+        var t_string;
+        $.ajax({
+            url:"/rows",
+            dataType:"JSON",
+            data:{
+                sections : {{ sections }} 
+            },success:function(data){T_number = data.rows-12;} });
+        $('#load_more_buttons').bind('click',function(){ 
+            for (var i = 0; i < 12; i++ ){
+               t_getdata(T_number);
+               T_number--;
+               if(T_number < 1){
+                break;
+            } 
+        }return false;}); 
+    });
+    </script>
+
+
+    <script>
+    $(function () {
+        $('#list_Tab a:first').tab('show')
+    });
+    </script>
+    {% endblock %}

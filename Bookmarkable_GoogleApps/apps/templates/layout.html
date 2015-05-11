@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="kr">
+    <meta charset="utf-8" />
+    {% block meta %}{% endblock %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>모두의 링크! 북마커블</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-social.css" />
+    <style>html,body {overflow-x: hidden;}body {padding-top: 70px;}footer {padding: 30px 0;}</style>
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <!-- 요소검사는 나빠요 ㅠ -->
+    <nav class="navbar navbar-fixed-top navbar-inverse" style="background-color: rgba(0,0,0,0.8);">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('main') }}"><strong>북마커블</strong></a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bookmark" aria-hidden="true">카테고리</span><span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/list/design">종합 디자인</a></li>
+                            <li><a href="/list/develop">종합 개발 관련</a></li>
+                            <li><a href="/list/source">개발 소스 파일</a></li>
+                            <li><a href="/list/slideshare">SlideShare</a></li>
+                            <li><a href="/list/ppt">PPT&템플릿</a></li>
+                            <li><a href="/list/honey_news">꿀 뉴스</a></li>
+                            <li><a href="/list/recommend">추천 사이트</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li><a href="/course"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Course</a></li>
+                    <li><a href="/search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Tag 검색기</a></li>
+                    {% if session.facebook_session %}
+                    <li><a href="{{ url_for('sending') }}"><span class="glyphicon glyphicon-send" aria-hidden="true"> 제보하기</a></li>
+                    <li><a href="/mypage/{{ data_send.id }}"><span class="glyphicon glyphicon-user" aria-hidden="true"> Mypage</span></a></li>
+                    <li><a href="{{ url_for('logout') }}">로그아웃</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}">Facebook로그인</a></li>
+                    {% endif %}
+                </ul>
+            </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <hr />
+    <footer>
+        <div class="footer-copyright text-center"> 
+            <p>Copyright 2014-{{ year }}. - 북마커블은 여러분과 함께 합니다.</p>
+            <a href="#">이용약관</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ url_for('contact') }}"> 게시 중단 요청 및 건의 사항 </a>
+        </div>
+    </footer>
+
+<script src="/static/js/jquery-1.10.2.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+{% block scripts %}{% endblock %}
+<!-- 요소검사는 나빠요 ㅠ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-59758374-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</body>
+</html>

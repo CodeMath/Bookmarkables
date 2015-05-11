@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block meta %}
+<meta property="og:url" content="http://bookmarkable.org/note">
+<meta name="url" content="http://bookmarkable.org/note">
+<meta property="og:title" content="모두의 링크! 북마커블 - 사이트 리뷰">
+<meta name="author" content="북마커블">
+<meta name="description" content="사이트 리뷰 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta property="og:description" content="사이트 리뷰 - 개발자, 디자이너, 대학생들을 위한 깨알 무제한 꿀팁 사이트! 웹 북마크로 자료를 저장하고 공유하기까지! 모두의 링크! 북마커블에서 확인하세요!" />
+<meta name="image" content="http://bookmarkable.org/static/img/x250.png">
+<meta property="og:image" content="http://bookmarkable.org/static/img/x250.png">
+
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/css/offcanvas.css" />
+{% endblock %}
+
+{% block content %}
+{% if get_flashed_messages() %}
+<!-- add_flash -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">웁스~! 확인하세요! </h3>
+        </div>
+        <div class="panel-body">
+          {% for each in get_flashed_messages() %}
+          <div class="flash">
+            {{each}}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+<!-- end_flash -->
+{% endif %}
+<div class="container">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-9">
+      <img id="ld_gif" src="../static/img/gif-load.gif" style="position:absolute;top:300px; left:50%;z-index:234567;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="text-align: center;">제목</th>
+            <th style="width: 150px;text-align: center;">글쓴이</th>
+            <th style="width: 120px;text-align: center;">카테고리</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if dev_article.content %}
+          {% for each in dev_article.content %}
+          <tr>
+            <td ><a href="/reviews/{{ each.id }}">{{ each.subject|truncate(30) }}</a></td>
+            <td style="text-align: center;">{{ each.user_name }}</td>
+            <td style="text-align: center;"><a href="/category/{{ each.category }}">
+              {% if each.category == "review" %}
+                  사이트 리뷰
+              {% elif each.category == "algorithm" %}
+                  알고리즘
+              {% elif each.category == "javascript" %}
+                  Javascript
+              {% elif each.category == "startup" %}
+                  스타트업
+              {% elif each.category == "dev_note" %}
+                  개발자 노트
+              {% elif each.category == "facebook_page" %}
+                  Facebook 페이지
+              {% endif %}
+            </a></td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="slidebar">
+      <div class="list-group">
+        <a href="/category/review" class="list-group-item ">사이트 리뷰</a>
+        <a href="/category/algorithm" class="list-group-item ">알고리즘</a>
+        <a href="/category/javascript" class="list-group-item ">Javascript</a>
+        <a href="/category/startup" class="list-group-item ">스타트업</a>
+        <a href="/category/dev_note" class="list-group-item ">개발자 노트</a>
+        <a href="/category/facebook_page" class="list-group-item ">Facebook 페이지</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/offcanvas.js"></script>
+<script src="../static/js/lds.js"></script>          
+{% endblock %}
+

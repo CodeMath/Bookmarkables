@@ -1,0 +1,103 @@
+﻿{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/css/write_main.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/red.css" />
+{% endblock %}
+
+{% block content %}
+{% if get_flashed_messages() %}
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">고생했어요!</h3>
+      </div>
+      <div class="panel-body">
+        {% for each in get_flashed_messages() %}
+        <div class="flash">
+          {{each}}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<div class="container">
+  <div class="row">
+
+    <br>
+    <form action="{{url_for('sending')}}" method="post" class="basic-grey">
+      <h2 class="text-center">북마커블에 제보하기</h2>
+      <label>
+        <br><h4>카테고리</h4>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <input class="btn btn-success" type="radio" name="iCheck" value="develop">종합 개발  
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <input class="btn btn-success" type="radio" name="iCheck" value="design">종합 디자인  
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <input class="btn btn-success" type="radio" name="iCheck" value="source">개발 소스
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <input class="btn btn-success" type="radio" name="iCheck" value="slideshare">Slideshare  
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <input class="btn btn-success" type="radio" name="iCheck" value="ppt">PPT&템플릿  
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <input class="btn btn-success" type="radio" name="iCheck" value="honey_news">꿀뉴스  
+          </div>
+
+        </div>
+      </label>
+      <label>
+        <br><h4>링크 제목 :</h4>
+        <input type="text" name="subject" maxlength="200" placeholder="링크 제목을 입력해주세요.">
+      </label>
+
+      <label>
+        <br><h4>링크 주소 :</h4>
+        <input type="text" name="urls" placeholder="http://까지 포함해서 알려주세요!">
+      </label>
+
+      <label>
+        <br><h4>링크 설명 :</h4>
+        <textarea name="explain" maxlength="255" placeholder="자세하면 더 좋아요!"></textarea>
+      </label>
+      <label>
+        <h4>테그 입력(2개) </h4>
+        <select class="js-example-tags form-control" multiple="multiple" name="tags">
+          {% if data.tags %}
+          {% for each in data.tags %}
+          <option value="{{ each }}">{{ each }}</option>
+          {% endfor %}
+          {% endif %}
+        </select>
+        <br>
+      </label>
+      <br>
+      <label style="margin:20px;">
+        <br><span>&nbsp;</span>
+      </label>
+      <label>
+        <span>&nbsp;</span> 
+        <input type="submit" class="button" value="링크 올리기" /> 
+      </label>    
+    </form>    
+
+  </div>
+
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="../static/js/icheck.min.js"></script>
+<script src="../static/js/select2.min.js"></script>
+<script>$(".js-example-tags").select2({tags: true})</script>
+<script>$(document).ready(function(){$('input').iCheck({checkboxClass: 'icheckbox_flat-red',radioClass: 'iradio_flat-red'});});</script>
+{% endblock %}

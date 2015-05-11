@@ -1,0 +1,219 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+{% for each in data_view.content %}
+<meta property="og:title" content="모두의 링크! 북마커블 - {{ each.subject }}">
+<meta name="author" content="{{ each.user_name }}">
+<meta property="og:type" content="article">
+<meta name="description" content="{{ each.explain }}" />
+<meta property="og:description" content="{{ each.explain }}" />
+<meta name="image" content="http://bookmarkable.org/static/img/x250.png">
+<meta property="og:image" content="http://bookmarkable.org/static/img/x250.png">
+{% if sections == 1111%}
+<meta property="og:url" content="http://bookmarkable.org/design/{{ each.id }}">
+<meta name="url" content="http://bookmarkable.org/design/{{ each.id }}">
+{% elif sections == 2222 %}
+<meta property="og:url" content="http://bookmarkable.org/develop/{{ each.id }}">
+<meta name="url" content="http://bookmarkable.org/develop/{{ each.id }}">
+{% elif sections == 3333 %}
+<meta property="og:url" content="http://bookmarkable.org/source/{{ each.id }}">
+<meta name="url" content="http://bookmarkable.org/source/{{ each.id }}">
+{% elif sections == 4444 %}
+<meta property="og:url" content="http://bookmarkable.org/slideshare/{{ each.id }}">
+<meta name="url" content="http://bookmarkable.org/slideshare/{{ each.id }}">
+{% elif sections == 5555 %}
+<meta property="og:url" content="http://bookmarkable.org/ppt/{{ each.id }}">
+<meta name="url" content="http://bookmarkable.org/ppt/{{ each.id }}">
+{% elif secitons == 6666 %}
+<meta property="og:url" content="http://bookmarkable.org/honey_news/{{ each.id }}">
+<meta name="url" content="http://bookmarkable.org/honey_news/{{ each.id }}">
+{% elif secitons == 7777 %}
+<meta property="og:url" content="http://bookmarkable.org/recommend/{{ each.id }}">
+<meta name="url" content="http://bookmarkable.org/recommend/{{ each.id }}">
+{% else %}
+{% endif %}
+{% endfor %}
+<meta property="og:site_name" content="모두의 링크! 북마커블">
+{% endblock %}
+
+
+
+{% block css %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			<div clas="row">
+				{% if data_view.content %}
+				{% for each in data_view.content %}
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<div class="panel-title">
+								{{ each.subject }}
+							</div>
+						</div>
+						<div class="panel-body">
+							{% if session.facebook_session %}
+							<a href="{{ each.urls }}" class="thumbnail">
+							{% else %}
+							<a href="#" class="thumbnail">
+							{% endif %}
+	
+								{% if sections == 4444 %}
+								<img class="img_thum" src="{{imgs_slideshare}}"/>
+								{% else %}
+								<img class="img_thum" src="http://images.shrinktheweb.com/xino.php?stwembed=1&stwxmax=320&stwymax=240&stwaccesskeyid=d38208d2e78d331&stwurl={{ each.urls }}" border=0 />
+								{% endif %}
+							</a>
+							<br>
+							{% if session.facebook_session %}
+							<p class="text-center"><strong>사진을 클릭하면 링크로 이동해요!</strong></p>	
+							{% else %}
+							<a href="/login" class="btn btn-primary">Facebook 로그인</a>
+							<p><strong>로그인 하시면 링크를 확인하실 수 있습니다!</strong></p>	
+							{% endif %}
+							<div style=" padding:5px;border-radius: 7px; border:1px solid #ddd">
+								<p> {{ each.explain }} </p>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-xs-7">
+									<a class="btn btn-social-icon btn-facebook" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{ each.urls }}"><i class="fa fa-facebook"></i></a>
+									<a class="btn btn-social-icon btn-twitter" target="_blank" href="https://twitter.com/intent/tweet?text=TEXT&url={{ each.urls }}"><i class="fa fa-twitter"></i></a>
+									{% if pre_ups %}
+									<button type="button" class="btn btn-success" id="save_btn" data-toggle="modal" data-target=".bs-example-modal-sm_{{ each.id }}" disabled="disabled"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span> 완료!</button>
+									{% else %}
+									<button type="button" class="btn btn-success" id="save_btn" data-toggle="modal" data-target=".bs-example-modal-sm_{{ each.id }}"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> 저장하기</button>
+									{% endif %}
+									
+								</div>
+								<div class="col-xs-5">
+									<h4><small><strong>{{ each.tag1 }} , {{ each.tag2 }}</strong></small></h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12">
+									<h4 style="display:inline;">Sender : </h4>
+									<img src="http://graph.facebook.com/{{ each.user_id }}/picture" class="img-circle" style="width: 35px; display: inline;">
+									<h4 style="display:inline;"><small><strong>{{ each.user_name }}</strong></small></h4>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div> <!-- col-xs-12 col-sm-6 col-md-6 -->
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div id="disqus_thread"></div>
+					<script type="text/javascript">
+					var disqus_shortname = 'bookmarkable';
+					(function() {
+						var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+						dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+						(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+					})();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				</div><!-- col-xs-12 col-sm-6 col-md-6 -->
+			</div> <!-- row -->
+		</div> <!-- col-xs-12 col-md-8 col-md-offset-2 -->
+
+		
+		
+	</div>
+	<!-- add_comment -->
+	{% if session.facebook_session %}
+	<!-- 로그인 시 저장 -->
+	<div class="modal fade bs-example-modal-sm_{{ each.id }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="padding-top:180px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="exampleModalLabel">북마커블에 링크를 저장해보세요! <br> <small>나만의 스마트한 북마크 리스트 만들기!</small></h4>
+				</div>
+				<div class="modal-body">
+					<form action="">
+						<input type="hidden" id="urls" name="urls" value="{{ each.urls }}">
+						<input type="hidden" id="subject" name="subject" value="{{ each.subject }}">
+						<input type="hidden" id="explain" name="explain" value="{{ each.explain }}">
+						{% if sections == 1111 %}
+						<input type="hidden" id="category" name="category" value="design">
+						{% elif sections == 2222 %}
+						<input type="hidden" id="category" name="category" value="develop">
+						{% elif sections == 3333 %}
+						<input type="hidden" id="category" name="category" value="source">
+						{% elif sections == 4444 %}
+						<input type="hidden" id="category" name="category" value="slideshare">
+						{% elif sections == 5555 %}
+						<input type="hidden" id="category" name="category" value="ppt">
+						{% elif sections == 6666 %}
+						<input type="hidden" id="category" name="category" value="honey_news">
+						{% elif sections == 7777 %}
+						<input type="hidden" id="category" name="category" value="recommend">
+						{% else %}
+						{% endif %}
+						<input type="hidden" id="user_name" name="user_name" value="{{ each.user_name }}">
+						<input type="hidden" id="tag1" name="tag1" value="{{ each.tag1 }}">
+						<input type="hidden" id="tag2" name="tag2" value="{{ each.tag2 }}">
+						<label class="control-label"> <span class="glyphicon glyphicon-comment" aria-hidden="true"> 코멘트: </label>
+						<input type="text" placeholder="코멘트를 작성하세요!" id="comment" class="form-control" name="comment" maxlength="87">
+						<br>
+						<button type="button" id="saving_btn" class="btn btn-default">저장하기</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% else %}
+	<!-- 비로그인시 설명 -->
+	<div class="modal fade bs-example-modal-sm_{{ each.id }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="padding-top:180px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h2 class="modal-title" id="exampleModalLabel" style="text-align:center;">북마커블에 0.5초 회원가입! <br> <small>모든 기능을 경험해보세요!</small></h2>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+							<h3 style="text-align:center;">Facebook 아이디로 쉽고 간편하게!</h3>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4">
+							<a class="btn btn-primary btn-lg" href="/login">Facebook 로그인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	<!-- end_comment -->
+
+	{% endfor %}
+	{% endif %}
+</div> <!-- container -->
+
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'bookmarkable'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    	var s = document.createElement('script'); s.async = true;
+    	s.type = 'text/javascript';
+    	s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    {% if session.facebook_session %}
+    <script src="../static/js/sving.js"></script>
+    {% endif %}
+    {% endblock %}
